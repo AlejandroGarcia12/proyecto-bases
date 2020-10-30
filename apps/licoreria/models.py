@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib import admin
 
 #creacion de las clases
-class Admin(models.Model):
+class Administrador(models.Model):
     id_admin = models.SmallIntegerField(serialize=True, primary_key=True)
     nombre = models.CharField(max_length=45)
     apellido = models.CharField(max_length=45)
@@ -49,13 +49,14 @@ class Producto(models.Model):
     precio = models.BigIntegerField()
     tamano = models.IntegerField()
     unidades_disponibles = models.IntegerField()
-    id_admin = models.ForeignKey(Admin, on_delete= models.CASCADE)
+    id_admin = models.ForeignKey(Administrador, on_delete= models.CASCADE)
     id_categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE)
 
 class Carrito_producto(models.Model):
+    id_carrito_producto = models.SmallIntegerField(serialize=True, primary_key=True)
     cantidad = models.IntegerField()
-    id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE, primary_key=True) # ?
-    id_carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, primary_key=True)
+    id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE)
+    id_carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
 
 class Domiciliario(models.Model):
     id_domiciliario = models.IntegerField(serialize=True, primary_key=True)
@@ -73,12 +74,13 @@ class Factura(models.Model):
     id_domiciliario = models.ForeignKey(Domiciliario, on_delete=models.CASCADE)
 
 class Producto_factura(models.Model):
+    id_producto_factura = models.SmallIntegerField(serialize=True, primary_key=True)
     cantidad = models.IntegerField()
-    id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE, primary_key=True) # ?
-    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE, primary_key=True)
+    id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE) # ?
+    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
 
 #importacion a la pagina de administrador
-admin.site.register(Admin)
+admin.site.register(Administrador)
 admin.site.register(Cliente)
 admin.site.register(Direccion)
 admin.site.register(Carrito)
