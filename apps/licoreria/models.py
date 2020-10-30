@@ -65,7 +65,6 @@ class Domiciliario(models.Model):
     cedula = models.BigIntegerField()
     telefono = models.BigIntegerField()
 
-
 class Factura(models.Model):
     id_factura = models.SmallIntegerField(serialize=True, primary_key=True)
     fecha = models.DateField()
