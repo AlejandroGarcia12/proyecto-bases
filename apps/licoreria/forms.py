@@ -1,5 +1,5 @@
 from django import forms
-from apps.licoreria.models import Cliente, Producto
+from apps.licoreria.models import Cliente, Producto, Domiciliario
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -64,4 +64,29 @@ class ProductoForm(forms.ModelForm):
             'unidades_disponibles' : forms.NumberInput(attrs = {'class' : 'form-control'}),
             'id_admin' : forms.NumberInput(attrs = {'class' : 'form-control'}),
             'id_categoria' : forms.NumberInput(attrs = {'class' : 'form-control'}),
+        }
+
+class DomiciliarioForm(forms.ModelForm):
+    class Meta:
+        model = Domiciliario
+        fields = [
+            'id_domiciliario',
+            'nombre',
+            'apellido',
+            'cedula',
+            'telefono',
+        ]
+        fields = {
+            'id_domiciliario' : 'Id',
+            'nombre' : 'Nombre',
+            'apellido' : 'Apellido',
+            'cedula' : 'Cédula',
+            'telefono' : 'Teléfono',
+        }
+        widgets = {
+            'id_domiciliario' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'nombre' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'apellido' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'cedula' : forms.NumberInput(attrs = {'class' : 'form-control'}),
+            'telefono' : forms.NumberInput(attrs = {'class' : 'form-control'}),
         }
