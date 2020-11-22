@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'licoreria',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'basesdedatos',
         'HOST': 'localhost',
         'PORT': 5432,
     }
