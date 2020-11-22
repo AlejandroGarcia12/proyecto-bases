@@ -75,7 +75,7 @@ class Factura(models.Model):
 class Producto_factura(models.Model):
     id_producto_factura = models.SmallIntegerField(serialize=True, primary_key=True)
     cantidad = models.IntegerField()
-    id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE) # ?
+    id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE)
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
 
 #importacion a la pagina de administrador
