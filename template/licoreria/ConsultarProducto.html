@@ -33,7 +33,9 @@
                 <td>{{ producto.precio }}</td>
                 <td>{{ producto.tamano }}</td>
                 <td>{{ producto.unidades_disponibles }}</td>
-                <td><a href = "{% url 'EditarProducto' producto.id_producto%}"><i class="fas fa-edit"></i></a></td>
+                <td><a href = "{% url 'EditarProducto' producto.id_producto%}"><i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Editar"></i></a>
+                  <a href="{% url 'EliminarProducto' producto.id_producto %}"><i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="bottom" title="Eliminar"></i></a>
+                </td>
               </tr>
               {% endfor %}
               {% endif %}

@@ -33,7 +33,9 @@
                 <td>{{ domiciliario.apellido}}</td>
                 <td>{{ domiciliario.cedula }}</td>
                 <td>{{ domiciliario.telefono }}</td>
-                <td><a href = "{% url 'EditarDomiciliario' domiciliario.id_domiciliario%}"><i class="fas fa-edit"></i></a></td>
+                <td><a href = "{% url 'EditarDomiciliario' domiciliario.id_domiciliario %}"><i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Editar"></i></a>
+                  <a href="{% url 'EliminarDomiciliario' domiciliario.id_domiciliario %}"><i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="bottom" title="Eliminar"></i></a>
+                </td>
               </tr>
               {% endfor %}
               {% endif %}
