@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block header %}
+{% include 'licoreria/menu.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header">
+          <h3>Consultar Cliente</h3>
+        </div>
+        <div class="card-body">
+          <table class = "table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Fecha de nacimiento</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if clientes %}
+              {% for cliente in clientes %}
+              <tr>
+                <td>{{ cliente.id_cliente }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.apellido}}</td>
+                <td>{{ cliente.cedula }}</td>
+                <td>{{ cliente.fecha_nacimiento}}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>{{ cliente.correo}}</td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

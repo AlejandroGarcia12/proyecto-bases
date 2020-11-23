@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block header %}
+{% include 'licoreria/menu.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header">
+          <h3>Consultar Domiciliario</h3>
+        </div>
+        <div class="card-body">
+          <table class = "table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Telefono</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if domiciliarios %}
+              {% for domiciliario in domiciliarios %}
+              <tr>
+                <td>{{ domiciliario.id_domiciliario }}</td>
+                <td>{{ domiciliario.nombre }}</td>
+                <td>{{ domiciliario.apellido}}</td>
+                <td>{{ domiciliario.cedula }}</td>
+                <td>{{ domiciliario.telefono }}</td>
+                <td><a href = "{% url 'EditarDomiciliario' domiciliario.id_domiciliario %}"><i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Editar"></i></a>
+                  <a href="{% url 'EliminarDomiciliario' domiciliario.id_domiciliario %}"><i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="bottom" title="Eliminar"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block header %}
+{% include 'licoreria/menu.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+  <div class="row">
+    <div class = "col-3"></div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>Eliminar Domiciliario</h3>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+          <div class="alert alert-warning" role="alert">
+            Esta seguro que desea eliminar el domiciliario {{ domiciliario.nombre }} {{ domiciliario.apellido }}
+          </div>
+          <button type="submit" class="btn btn-primary">Eliminar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
