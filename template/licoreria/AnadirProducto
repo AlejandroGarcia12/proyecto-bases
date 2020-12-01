@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% block header %}
-{% include 'licoreria/menuAdministrador.html' %}
+{% include 'licoreria/menu.html' %}
 {% endblock %}
 
 {% block content %}
@@ -11,18 +11,21 @@
     <div class="col-6">
       <div class="card">
         <div class="card-header">
-          <h3>Editar Producto</h3>
+          <h3>Producto Añadido al Carrito de Comprass</h3>
         </div>
         <div class="card-body">
           <form method="post">
             {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit" class="btn btn-primary">Editar</button>
+          <div class="alert alert-warning" role="alert">
+            Esta seguro que desea eliminar el producto {{ producto.nombre }}
+          </div>
+          <button type="submit" class="btn btn-primary">Eliminar</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 {% endblock %}
