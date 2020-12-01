@@ -1,5 +1,5 @@
 from django import forms
-from apps.licoreria.models import Cliente, Producto, Domiciliario
+from apps.licoreria.models import Cliente, Producto, Domiciliario, Carrito, Carrito_producto
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -89,4 +89,39 @@ class DomiciliarioForm(forms.ModelForm):
             'apellido' : forms.TextInput(attrs = {'class' : 'form-control'}),
             'cedula' : forms.NumberInput(attrs = {'class' : 'form-control'}),
             'telefono' : forms.NumberInput(attrs = {'class' : 'form-control'}),
+        }
+
+class CarritoForm(forms.ModelForm):
+    class Meta:
+        model = Carrito
+        fields = [
+            'id_carrito',
+        ]
+        fields = {
+            'id_carrito' : 'Id',
+        }
+        widgets = {
+            'id_carrito' : forms.TextInput(attrs = {'class' : 'form-control'}),
+        }
+
+class Carrito_productoForm(forms.ModelForm):
+    class Meta:
+        model = Carrito_producto
+        fields = [
+            # 'id_carrito_producto',
+            'cantidad',
+            # 'id_producto',
+            # 'id_carrito',
+        ]
+        fields = {
+            # 'id_carrito_producto' : 'Id',
+            'cantidad' : 'Cantidad',
+            # 'id_producto' : 'Id producto',
+            # 'id_carrito' : 'Id carrito',
+        }
+        widgets = {
+            # 'id_carrito_producto' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'cantidad' :  forms.NumberInput(attrs = {'class' : 'form-control'}),
+            # 'id_producto' :  forms.TextInput(attrs = {'class' : 'form-control'}),
+            # 'id_carrito' : forms.TextInput(attrs = {'class' : 'form-control'}),
         }
