@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from licoreria.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('licoreria/', include('apps.licoreria.urls')),
+    path('', index),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
