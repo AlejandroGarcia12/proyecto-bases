@@ -36,7 +36,6 @@ class Direccion(models.Model):
 
 class Carrito(models.Model):
     id_carrito = models.SmallIntegerField(serialize=True, primary_key=True)
-    valor_total = models.SmallIntegerField()
     ic_cliente = models.ForeignKey(Cliente, on_delete= models.CASCADE)
 
 class Categoria(models.Model):
@@ -71,12 +70,14 @@ class Factura(models.Model):
     valor_total = models.BigIntegerField()
     estado = models.CharField(max_length=45)
     id_domiciliario = models.ForeignKey(Domiciliario, on_delete=models.CASCADE)
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, default = 1000)
 
 class Producto_factura(models.Model):
     id_producto_factura = models.SmallIntegerField(serialize=True, primary_key=True)
     cantidad = models.IntegerField()
     id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE) # ?
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    precio = models.BigIntegerField(default = 0)
 
 #importacion a la pagina de administrador
 admin.site.register(Administrador)
@@ -89,4 +90,3 @@ admin.site.register(Carrito_producto)
 admin.site.register(Domiciliario)
 admin.site.register(Factura)
 admin.site.register(Producto_factura)
-  
