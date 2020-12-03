@@ -1,7 +1,11 @@
 {% extends 'base/base.html' %}
 
 {% block header %}
+{% if user.groups.all.0.name == 'cliente' %}
+{% include 'licoreria/menuCliente.html' %}
+{% else %}
 {% include 'licoreria/menuAdministrador.html' %}
+{% endif %}
 {% endblock %}
 
 {% block content %}

@@ -1,10 +1,15 @@
 {% extends 'base/base.html' %}
 
 {% block header %}
+{% if user.groups.all.0.name == 'cliente' %}
+{% include 'licoreria/menuCliente.html' %}
+{% else %}
 {% include 'licoreria/menuAdministrador.html' %}
+{% endif %}
 {% endblock %}
 
 {% block content %}
+{% if user.groups.all.0.name != 'cliente'%}
 <div class="container mt-3">
   <div class="row">
     <div class="col-sm">
@@ -16,9 +21,27 @@
           <table class = "table table-striped table-hover">
             <thead>
               <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Id
+                  {% if orden == 'id_cliente'%}
+                    <i class="fas fa-sort-down"></i>
+                  {% else %}
+                    <a href = "{% url 'ConsultarCliente' 'id_cliente'%}"> <i class="fas fa-sort" data-toggle="tooltip" data-placement="bottom" title="Ordenar"></i></a>
+                  {% endif %}
+                </th>
+                <th>Nombre
+                  {% if orden == 'nombre'%}
+                    <i class="fas fa-sort-down"></i>
+                  {% else %}
+                    <a href = "{% url 'ConsultarCliente' 'nombre'%}"> <i class="fas fa-sort" data-toggle="tooltip" data-placement="bottom" title="Ordenar"></i></a>
+                  {% endif%}
+                </th>
+                <th>Apellido
+                  {% if orden == 'apellido'%}
+                    <i class="fas fa-sort-down"></i>
+                  {% else %}
+                    <a href = "{% url 'ConsultarCliente' 'apellido'%}"> <i class="fas fa-sort" data-toggle="tooltip" data-placement="bottom" title="Ordenar"></i></a>
+                  {% endif%}
+                </th>
                 <th>Cédula</th>
                 <th>Fecha de nacimiento</th>
                 <th>Teléfono</th>
@@ -46,4 +69,5 @@
     </div>
   </div>
 </div>
+{% endif %}
 {% endblock %}
