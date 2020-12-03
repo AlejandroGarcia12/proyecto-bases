@@ -7,7 +7,7 @@ from apps.licoreria.views import ConsultarCarrito , CarritoProducto #, AnadirPro
 urlpatterns = [
     path('', sesion, name='sesion'),
     path('AgregarCliente/', AgregarCliente, name = 'AgregarCliente'),
-    path('ConsultarCliente/', ConsultarCliente, name = 'ConsultarCliente'),
+    path('ConsultarCliente/<orden>', ConsultarCliente, name = 'ConsultarCliente'),
 
     path('AgregarProducto/', AgregarProducto, name = 'AgregarProducto'),
     path('ConsultarProducto/<orden>', ConsultarProducto, name = 'ConsultarProducto'),

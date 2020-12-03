@@ -26,9 +26,9 @@ def AgregarCliente(request):
     return render(request, 'licoreria/AgregarCliente.html', {'form' : form})
 
 @login_required
-def ConsultarCliente(request):
-    clientes = Cliente.objects.all()
-    contexto = {'clientes':clientes}
+def ConsultarCliente(request, orden):
+    clientes = Cliente.objects.order_by(orden)
+    contexto = {'clientes':clientes, 'orden':orden}
     return render(request, 'licoreria/ConsultarCliente.html', contexto)
 
 @login_required
@@ -42,7 +42,7 @@ def AgregarProducto(request):
 
 def ConsultarProducto(request, orden):
     productos = Producto.objects.order_by(orden)
-    contexto = {'productos':productos}
+    contexto = {'productos': productos, 'orden':orden}
     return render(request, 'licoreria/ConsultarProducto.html', contexto)
 
 @login_required
@@ -108,7 +108,7 @@ def AnadirProducto(request, id_prod):
     if carrito == None:
         carrito.save()
     carrito_producto = Carrito_producto.objects.create(producto = producto)
-    carrito_producto = Carrito_producto.objects.filter()
+    carrito_producto = Carrito_producto.objects.filter( )
     return render(request, 'licoreria/AnadirProducto.html', {'form' : form})
 
 # def AnadirProducto(request, id_prod):
