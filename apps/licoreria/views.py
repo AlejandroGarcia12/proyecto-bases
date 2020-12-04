@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from apps.licoreria.models import Cliente, Producto, Domiciliario, Carrito, Carrito_producto
-from apps.licoreria.forms import ClienteForm, ProductoForm, DomiciliarioForm, CarritoForm #, Carrito_productoForm
+from apps.licoreria.forms import ClienteForm, ProductoForm, DomiciliarioForm, CarritoForm, DireccionForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -30,7 +30,14 @@ def ConsultarCliente(request, orden):
     clientes = Cliente.objects.order_by(orden)
     contexto = {'clientes':clientes, 'orden':orden}
     return render(request, 'licoreria/ConsultarCliente.html', contexto)
-
+@login_required
+def AgregarDireccion(request):
+    if request.method == 'POST':
+        form = DireccionForm(request.POST)
+        form.save()
+    else:
+        form = DireccionForm()
+    return render(request, 'licoreria/AgregarDireccion.html', {'form' : form})
 @login_required
 def AgregarProducto(request):
     if request.method == 'POST':

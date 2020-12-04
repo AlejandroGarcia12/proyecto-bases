@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.licoreria.views import sesion, AgregarCliente, ConsultarCliente
+from apps.licoreria.views import sesion, AgregarCliente, ConsultarCliente, AgregarDireccion
 from apps.licoreria.views import AgregarProducto, ConsultarProducto, EditarProducto, EliminarProducto
 from apps.licoreria.views import AgregarDomiciliario, ConsultarDomiciliario, EditarDomiciliario, EliminarDomiciliario
 from apps.licoreria.views import ConsultarCarrito , CarritoProducto #, AnadirProducto,
@@ -8,6 +8,7 @@ urlpatterns = [
     path('', sesion, name='sesion'),
     path('AgregarCliente/', AgregarCliente, name = 'AgregarCliente'),
     path('ConsultarCliente/<orden>', ConsultarCliente, name = 'ConsultarCliente'),
+    path('AgregarDireccion/', AgregarDireccion, name = 'AgregarDireccion'),
 
     path('AgregarProducto/', AgregarProducto, name = 'AgregarProducto'),
     path('ConsultarProducto/<orden>', ConsultarProducto, name = 'ConsultarProducto'),

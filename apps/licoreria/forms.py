@@ -1,5 +1,5 @@
 from django import forms
-from apps.licoreria.models import Cliente, Producto, Domiciliario, Carrito, Carrito_producto
+from apps.licoreria.models import Cliente, Producto, Domiciliario, Carrito, Carrito_producto, Direccion
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -13,6 +13,7 @@ class ClienteForm(forms.ModelForm):
             'telefono',
             'correo',
             'clave',
+
         ]
         fields = {
             'id_cliente' : 'Id',
@@ -23,6 +24,7 @@ class ClienteForm(forms.ModelForm):
             'telefono' : 'Teléfono',
             'correo' : 'Correo',
             'clave' : 'Clave',
+
         }
         widgets = {
             'id_cliente' : forms.TextInput(attrs = {'class' : 'form-control'}),
@@ -33,6 +35,53 @@ class ClienteForm(forms.ModelForm):
             'telefono' : forms.NumberInput(attrs = {'class' : 'form-control'}),
             'correo' : forms.TextInput(attrs = {'class' : 'form-control'}),
             'clave' : forms.TextInput(attrs = {'class' : 'form-control'}),
+
+        }
+
+class DireccionForm(forms.ModelForm):
+    class Meta:
+        model = Direccion
+        fields = [
+            'id_direccion',
+            'barrio',
+            'via_principal',
+            'num_1',
+            'aux_1',
+            'num_2',
+            'aux_2',
+            'num_3',
+            'inmueble',
+            'interior',
+            'num_4',
+            'id_cliente',
+        ]
+        fields = {
+            'id_direccion' : 'Id',
+            'barrio' : 'Barrio',
+            'via_principal' : 'Via Principal',
+            'num_1' : 'Numero',
+            'aux_1' : 'Aux',
+            'num_2' : 'Numero',
+            'aux_2' : 'Aux',
+            'num_3' : 'Numero',
+            'inmueble' : 'Tipo de inmueble',
+            'interior' : 'Interior',
+            'num_4' : 'Numero',
+            'id_cliente' : 'Id_Cliente',
+        }
+        widgets = {
+            'id_direccion' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'barrio' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'via_principal' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'num_1' : forms.NumberInput(attrs = {'class' : 'form-control'}),
+            'aux_1' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'num_2' : forms.NumberInput(attrs = {'class' : 'form-control'}),
+            'aux_2' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'num_3' : forms.NumberInput(attrs = {'class' : 'form-control'}),
+            'inmueble' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'interior' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'num_4' : forms.NumberInput(attrs = {'class' : 'form-control'}),
+            'id_cliente' : forms.NumberInput(attrs = {'class' : 'form-control'}),
         }
 
 class ProductoForm(forms.ModelForm):

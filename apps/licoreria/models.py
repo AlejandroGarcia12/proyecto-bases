@@ -20,6 +20,7 @@ class Cliente(models.Model):
     correo = models.CharField(max_length=200)
     clave = models.CharField(max_length=100)
 
+
 class Direccion(models.Model):
     id_direccion = models.IntegerField(serialize=True, primary_key=True)
     barrio = models.CharField(max_length=45)
@@ -78,6 +79,8 @@ class Producto_factura(models.Model):
     id_producto = models.ForeignKey(Producto, on_delete= models.CASCADE) # ?
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
     precio = models.BigIntegerField(default = 0)
+
+
 
 #importacion a la pagina de administrador
 admin.site.register(Administrador)
