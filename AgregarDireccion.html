@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block header %}
+{% if user.groups.all.0.name == 'cliente' %}
+{% include 'licoreria/menuCliente.html' %}
+{% else %}
+{% include 'licoreria/menuAdministrador.html' %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if user.groups.all.0.name != 'cliente'%}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Agregar Direccion Personal</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
